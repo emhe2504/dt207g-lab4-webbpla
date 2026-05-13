@@ -2,13 +2,24 @@
 <html lang="sv">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TheGuestbook</title>
   </head>
   <body>
-    <header></header>
-    <main></main>
+    <header>
+      <h1>Gästboken för alla</h1>
+      <nav>
+        <ul>
+          <li><a href="/index.html">Startsida</a></li>
+          <li><a href="/add.html">Skriv i gästboken</a></li>
+          <li><a href="/about.html">Läs om oss</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Alla inlägg</h2>
+      <div id="allGuestbooks"></div>
+    </main>
     <footer></footer>
     <script type="module" src="/src/main.js"></script>
   </body>
