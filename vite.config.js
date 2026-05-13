@@ -7,7 +7,8 @@ export default defineConfig({
             input: {
                 start: resolve(__dirname, "index.html"),
                 add: resolve(__dirname, "add.html"),
-                login: resolve(__dirname, "login.html")
+                login: resolve(__dirname, "login.html"),
+                register: resolve(__dirname, "register.html")
             }
         }
     },

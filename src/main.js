@@ -2,12 +2,17 @@
 const guestBooks = document.getElementById("allGuestbooks");
 const menu = document.getElementById("menu");
 
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+
 window.onload = init;
 
 function init() {
 
     if (menu) { editMenu() };
-    if (guestBooks) { getGuestbooks() }
+    if (guestBooks) { getGuestbooks() };
+    if (loginForm) { loginForm.addEventListener("submit", login) }
+    if (registerForm) { registerForm.addEventListener("submit", registerAccount) }
 }
 
 //Hämta guestbooks från API
@@ -27,7 +32,6 @@ async function getGuestbooks() {
 
 //Skriva ut guestbooks till DOM
 function renderGuestbooks(jsonData) {
-    console.log(jsonData);
 
     guestBooks.innerHTML = "";
 
@@ -50,10 +54,116 @@ function editMenu() {
         menu.innerHTML = `
         <li><a href="/index.html">Startsida</a></li>
         <li><a href="/add.html">Skriv i gästboken</a></li>
-        <li><a href="/about.html">Logga ut</a></li>`
+        <li><a href="/login.html">Logga ut</a></li>`
     } else {
         menu.innerHTML = `
         <li><a href="/index.html">Startsida</a></li>
-        <li><a href="/about.html">Logga in</a></li>`
+        <li><a href="/login.html">Logga in</a></li>`
     }
+}
+
+async function registerAccount(event) {
+
+    event.preventDefault(); //Inte ladda om sidan
+
+    //Värden från input
+    const registeredEmail = document.getElementById("emailReg").value;
+    const registeredPassword = document.getElementById("passwordReg").value;
+
+    //Felmeddelanden vid tomma inputfält
+    const regErrors = [];
+    const errorSpot = document.getElementById("regErrors");
+    errorSpot.innerHTML = "";
+
+    if (!registeredEmail) {
+        regErrors.push("Ange E-postadress")
+    }
+    if (!registeredPassword) {
+        regErrors.push("Ange lösenord")
+    }
+    regErrors.forEach(error => {
+        const newLi = document.createElement("li");
+        newLi.textContent = error;
+        errorSpot.appendChild(newLi);
+    });
+
+    let user = {
+        email: registeredEmail,
+        password: registeredPassword
+    }
+
+    try {
+
+        const response = await fetch("http://localhost:3001/api/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+async function login(event) {
+
+    event.preventDefault(); //Inte ladda om sidan
+
+    //Värden från input
+    const addedEmail = document.getElementById("email").value;
+    const addedPassword = document.getElementById("password").value;
+
+    //Felmeddelanden vid tomma inputfält
+    const errors = [];
+    const errorSpot = document.getElementById("errorUl");
+    errorSpot.innerHTML = "";
+
+    if (!addedEmail) {
+        errors.push("Fyll i E-postadress")
+    }
+    if (!addedPassword) {
+        errors.push("Fyll i lösenord")
+    }
+    errors.forEach(error => {
+        const newLi = document.createElement("li");
+        newLi.textContent = error;
+        errorSpot.appendChild(newLi);
+    });
+
+    let user = {
+        email: addedEmail,
+        password: addedPassword
+    }
+
+    try {
+
+        const response = await fetch("http://localhost:3001/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+
+            if (data.token) {
+                localStorage.setItem("Guestbook-token", data.token);
+            }
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+
 }
