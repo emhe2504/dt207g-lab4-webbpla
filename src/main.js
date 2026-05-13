@@ -48,6 +48,7 @@ function renderGuestbooks(jsonData) {
     });
 }
 
+//Ändra meny beroende på om inloggad eller utloggad
 function editMenu() {
 
     if (localStorage.getItem("Guestbook-token")) {
@@ -71,6 +72,7 @@ function editMenu() {
     }
 }
 
+//Registrera konto
 async function registerAccount(event) {
 
     event.preventDefault(); //Inte ladda om sidan
@@ -122,6 +124,7 @@ async function registerAccount(event) {
 
 }
 
+//Logga in på registerat konto
 async function login(event) {
 
     event.preventDefault(); //Inte ladda om sidan
@@ -162,8 +165,16 @@ async function login(event) {
             body: JSON.stringify(user)
         })
 
-        if (response.ok) {
-            const data = await response.json();
+        const data = await response.json();
+
+        if (!response.ok) {
+            const errorMessage = data.message;
+            const errorSpot = document.getElementById("loginError");
+            errorSpot.textContent = errorMessage;
+            return;
+        
+        } else {
+            errorSpot.textContent = "";
             console.log(data);
 
             if (data.token) {
