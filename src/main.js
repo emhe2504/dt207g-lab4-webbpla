@@ -54,11 +54,20 @@ function editMenu() {
         menu.innerHTML = `
         <li><a href="/index.html">Startsida</a></li>
         <li><a href="/add.html">Skriv i gästboken</a></li>
-        <li><a href="/login.html">Logga ut</a></li>`
+        <li><a href="/login.html" id="logout-button">Logga ut</a></li>`
     } else {
         menu.innerHTML = `
         <li><a href="/index.html">Startsida</a></li>
-        <li><a href="/login.html">Logga in</a></li>`
+        <li><a href="/login.html" id="login-button">Logga in</a></li>`
+    }
+
+    const logoutButton = document.getElementById("logout-button");
+
+    if(logoutButton) {
+        logoutButton.addEventListener("click", () => {
+            localStorage.removeItem("Guestbook-token");
+            window.location.href = "login.html";
+        })
     }
 }
 
@@ -159,6 +168,7 @@ async function login(event) {
 
             if (data.token) {
                 localStorage.setItem("Guestbook-token", data.token);
+                window.location.href = "index.html";
             }
         }
 
