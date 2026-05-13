@@ -18,7 +18,21 @@
       </nav>
     </header>
     <main>
+      <ul id="errorUl"></ul>
+      <div id="addGuestbook">
       <h2>Vad har du på hjärtat idag?</h2>
+      <form method="post" id="guestbookForm">
+        <label for="title">Titel på inlägg</label>
+        <br>
+        <input type="text" id="title">
+        <br>
+        <label for="thoughts">Dina tankar du vill dela med dig av</label>
+        <br>
+        <textarea id="thoughts" cols="30" rows="10"></textarea>
+        <br>
+        <button type="submit">Posta inlägg</button>
+      </form>
+      </div>
     </main>
     <footer></footer>
     <script type="module" src="/src/main.js"></script>

@@ -4,6 +4,7 @@ const menu = document.getElementById("menu");
 
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
+const guestbookForm = document.getElementById("guestbookForm");
 
 window.onload = init;
 
@@ -11,8 +12,9 @@ function init() {
 
     if (menu) { editMenu() };
     if (guestBooks) { getGuestbooks() };
-    if (loginForm) { loginForm.addEventListener("submit", login) }
-    if (registerForm) { registerForm.addEventListener("submit", registerAccount) }
+    if (loginForm) { loginForm.addEventListener("submit", login) };
+    if (registerForm) { registerForm.addEventListener("submit", registerAccount) };
+    if (guestbookForm) { guestbookForm.addEventListener("submit", addGuestbook) };
 }
 
 //Hämta guestbooks från API
@@ -35,9 +37,12 @@ function renderGuestbooks(jsonData) {
 
     guestBooks.innerHTML = "";
 
-    jsonData.forEach(guestbook => {
+    //Sortera data från API, nyare inlägg överst (_id innehåller också tid)
+    const sortedData = jsonData.sort((a, b) => b._id.localeCompare(a._id));
+
+    sortedData.forEach(guestbook => {
         const date = guestbook.created;
-        const fixedDate = new Date(date).toLocaleDateString();
+        const fixedDate = new Date(date).toLocaleDateString("sv-SE");
 
         guestBooks.innerHTML += `
         <article>
@@ -64,7 +69,7 @@ function editMenu() {
 
     const logoutButton = document.getElementById("logout-button");
 
-    if(logoutButton) {
+    if (logoutButton) {
         logoutButton.addEventListener("click", () => {
             localStorage.removeItem("Guestbook-token");
             window.location.href = "login.html";
@@ -167,12 +172,13 @@ async function login(event) {
 
         const data = await response.json();
 
+        //Felmeddelande om fel epost eller lösen angetts
         if (!response.ok) {
             const errorMessage = data.message;
             const errorSpot = document.getElementById("loginError");
             errorSpot.textContent = errorMessage;
             return;
-        
+
         } else {
             errorSpot.textContent = "";
             console.log(data);
@@ -181,6 +187,74 @@ async function login(event) {
                 localStorage.setItem("Guestbook-token", data.token);
                 window.location.href = "index.html";
             }
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+async function addGuestbook(event) {
+
+    event.preventDefault(); //Inte ladda om sidan
+
+    //Värden från input
+    const addedTitle = document.getElementById("title").value;
+    const addedThoughts = document.getElementById("thoughts").value;
+
+    //Felmeddelanden vid tomma inputfält
+    const errors = [];
+    const errorSpot = document.getElementById("errorUl");
+    errorSpot.innerHTML = "";
+
+    if (!addedTitle) {
+        errors.push("Fyll i titel")
+    }
+    if (!addedThoughts) {
+        errors.push("Fyll i någon tanke")
+    }
+    errors.forEach(error => {
+        const newLi = document.createElement("li");
+        newLi.textContent = error;
+        errorSpot.appendChild(newLi);
+    });
+
+    let guestbook = {
+        title: addedTitle,
+        thoughts: addedThoughts
+    }
+
+    const token = localStorage.getItem("Guestbook-token");
+
+    try {
+
+        const response = await fetch("http://localhost:3001/guestbook", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify(guestbook)
+        })
+
+        const data = await response.json();
+
+        //Felmeddelande om fel titel eller lösen angetts
+        if (!response.ok) {
+            console.log(data.message);
+            /**
+             * const errorMessage = data.message;
+            const errorSpot = document.getElementById("loginError");
+            errorSpot.textContent = errorMessage;
+             */
+            return;
+
+        } else {
+            console.log(data);
+            document.getElementById("title").value = "";
+            document.getElementById("thoughts").value = "";
+            window.location.href = "index.html";
         }
 
     } catch (error) {
