@@ -11,22 +11,35 @@
 
 <body>
   <header>
-    <picture>
-      <source srcset="/guestbook.webp" type="image/webp">
-      <img id="guestbookImg" src="/guestbook.jpg" alt="Brun gästbok">
-    </picture>
     <h1 class="special-elite">Gästboken för alla</h1>
     <nav>
-      <ul id="menu">
+      <ul>
         <li><a href="/index.html">Startsida</a></li>
-        <li><a href="/add.html">Skriv i gästboken</a></li>
-        <li><a href="/login.html">Logga in</a></li>
       </ul>
     </nav>
   </header>
   <main>
-    <h2 class="special-elite">Alla inlägg</h2>
-    <div id="allGuestbooks"></div>
+    <div id="register">
+      <h2>Registrera konto</h2>
+      <div id="errorAndForm">
+        <ul id="regErrors"></ul>
+        <p id="regOK"></p>
+        <form method="post" id="registerForm">
+          <label for="emailReg">E-postadress</label>
+          <input type="text" id="emailReg">
+          <br>
+          <label for="passwordReg">Lösenord</label>
+          <input type="text" id="passwordReg">
+          <br>
+          <button type="submit" id="registerButton">Registera konto</button>
+        </form>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li>Sida för att logga in: <a href="login.html">Logga in</a></li>
+      </ul>
+    </nav>
   </main>
   <footer>
     <h4>Guestbook AB, 2026</h4>
