@@ -4,10 +4,17 @@
     font-style: normal;
 }
 
+html,
 body {
-    width: 100%;
     height: 100%;
     margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8efff;
     font-size: 15px;
@@ -37,6 +44,7 @@ header nav {
     margin: 3% auto;
     justify-content: center;
     background-color: #facff8;
+    margin-bottom: 0;
 }
 
 header nav ul {
@@ -56,6 +64,10 @@ header nav ul li a {
 header nav ul li a:hover {
     font-weight: bold;
     text-decoration: underline;
+}
+
+main {
+    flex: 1;
 }
 
 h2 {
@@ -169,4 +181,97 @@ footer {
 
 footer p {
     font-weight: 500;
+}
+
+@media screen and (max-width: 1300px) {
+
+    #registerButton {
+        width: 30%;
+    }
+
+}
+
+@media screen and (max-width: 1100px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    #guestbookImg {
+        width: 200px;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    #allGuestbooks {
+        width: 75%;
+    }
+
+    #errorAndForm {
+        width: 65%;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+
+    #registerButton {
+        width: 35%;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+
+    body {
+        font-size: 12px;
+    }
+
+    header nav ul li a {
+        font-size: 13px;
+    }
+
+    #guestbookImg {
+        width: 130px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-top: 6%;
+    }
+
+    #allGuestbooks {
+        width: 85%;
+    }
+
+    #errorAndForm {
+        width: 80%;
+    }
+
+    main nav ul li {
+        margin-top: 5%;
+    }
+
+    main nav ul li a {
+        font-size: 14px;
+    }
+
+    #registerButton {
+        width: 40%;
+    }
+
+    button {
+        font-size: 12px;
+    }
+
 }

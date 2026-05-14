@@ -1,45 +1,48 @@
 <!doctype html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TheGuestbook</title>
-    <script src="/src/authChecker.js"></script>
-    <link rel="stylesheet" href="src/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <header>
-      <h1 class="special-elite">Gästboken för alla</h1>
-      <nav>
-        <ul id="menu">
-          <li><a href="/index.html">Startsida</a></li>
-          <li><a href="/add.html">Skriv i gästboken</a></li>
-          <li><a href="/login.html">Logga ut</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <div id="addGuestbook">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheGuestbook</title>
+  <script src="/src/authChecker.js"></script>
+  <link rel="stylesheet" href="src/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1 class="special-elite">Gästboken för alla</h1>
+    <nav>
+      <ul id="menu">
+        <li><a href="/index.html">Startsida</a></li>
+        <li><a href="/add.html">Skriv i gästboken</a></li>
+        <li><a href="/login.html">Logga ut</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div id="addGuestbook">
       <h2>Vad har du på hjärtat idag?</h2>
       <div id="errorAndForm">
-      <ul id="errorUl"></ul>
-      <form method="post" id="guestbookForm">
-        <label for="title">Titel på inlägg</label>
-        <input type="text" id="title">
-        <br>
-        <label for="thoughts">Dina tankar du vill dela med dig av</label>
-        <textarea id="thoughts" cols="30" rows="10"></textarea>
-        <br>
-        <button type="submit">Posta inlägg</button>
-      </form>
+        <ul id="errorUl"></ul>
+        <form method="post" id="guestbookForm">
+          <label for="title">Titel på inlägg</label>
+          <input type="text" id="title">
+          <br>
+          <label for="thoughts">Dina tankar du vill dela med dig av</label>
+          <textarea id="thoughts" cols="30" rows="10"></textarea>
+          <br>
+          <button type="submit">Posta inlägg</button>
+        </form>
       </div>
-      </div>
-    </main>
-    <footer>
-      <h4>Guestbook AB, 2026</h4>
-      <p>Skapad av: Emma Heikkinen, emhe2504@student.miun.se</p>
-    </footer>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    </div>
+  </main>
+  <footer>
+    <h4>Guestbook AB, 2026</h4>
+    <p>Skapad av: Emma Heikkinen, emhe2504@student.miun.se</p>
+  </footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
