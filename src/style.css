@@ -126,7 +126,7 @@ form {
 
 #loginForm,
 #registerForm {
-    width: 90%;
+    width: 100%;
 }
 
 form label {
@@ -186,7 +186,8 @@ footer p {
 
 @media screen and (max-width: 1300px) {
 
-    #registerButton {
+    #registerButton,
+    #addButton {
         width: 30%;
     }
 
@@ -222,7 +223,8 @@ footer p {
 
 @media screen and (max-width: 800px) {
 
-    #registerButton {
+    #registerButton,
+    #addButton {
         width: 35%;
     }
 
@@ -267,12 +269,73 @@ footer p {
         font-size: 14px;
     }
 
-    #registerButton {
+    #registerButton,
+    #addButton {
         width: 40%;
     }
 
     button {
         font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+
+    body {
+        font-size: 12px;
+    }
+
+    header nav ul li a {
+        font-size: 13px;
+    }
+
+    #guestbookImg {
+        width: 130px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-top: 6%;
+    }
+
+    #allGuestbooks {
+        width: 85%;
+    }
+
+    #errorAndForm {
+        width: 80%;
+    }
+
+    main nav ul li {
+        margin-top: 5%;
+    }
+
+    main nav ul li a {
+        font-size: 14px;
+    }
+
+    #registerButton,
+    #addButton {
+        width: 40%;
+    }
+
+    button {
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    #registerButton,
+    #addButton,
+    button {
+        width: 45%;
     }
 
 }
