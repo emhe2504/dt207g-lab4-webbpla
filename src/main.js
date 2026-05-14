@@ -22,7 +22,7 @@ async function getGuestbooks() {
 
     try {
 
-        const fetchData = await fetch("http://localhost:3001/guestbook");
+        const fetchData = await fetch("https://dt207g-lab4-webbtj.onrender.com/guestbook");
         const jsonData = await fetchData.json();
 
         renderGuestbooks(jsonData);
@@ -117,7 +117,7 @@ async function registerAccount(event) {
 
     try {
 
-        const response = await fetch("http://localhost:3001/api/register", {
+        const response = await fetch("https://dt207g-lab4-webbtj.onrender.com/api/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -182,7 +182,7 @@ async function login(event) {
 
     try {
 
-        const response = await fetch("http://localhost:3001/api/login", {
+        const response = await fetch("https://dt207g-lab4-webbtj.onrender.com/api/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -249,7 +249,7 @@ async function addGuestbook(event) {
 
     try {
 
-        const response = await fetch("http://localhost:3001/guestbook", {
+        const response = await fetch("https://dt207g-lab4-webbtj.onrender.com/guestbook", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
