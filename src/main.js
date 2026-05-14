@@ -42,12 +42,19 @@ function renderGuestbooks(jsonData) {
 
     sortedData.forEach(guestbook => {
         const date = guestbook.created;
-        const fixedDate = new Date(date).toLocaleDateString("sv-SE");
+        const fixedDate = new Date(date).toLocaleDateString("sv-SE", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        });
 
         guestBooks.innerHTML += `
         <article>
         <h3>${guestbook.title}</h3>
-        <p>${guestbook.title}</p>
+        <p>${guestbook.thoughts}</p>
         <p>Skapad: ${fixedDate}</p>
         </article>`
     });
@@ -118,9 +125,22 @@ async function registerAccount(event) {
             body: JSON.stringify(user)
         })
 
+
+        const data = await response.json();
+
         if (response.ok) {
-            const data = await response.json();
             console.log(data);
+
+            const regOK = document.getElementById("regOK");
+            regOK.textContent = data.message;
+
+            document.getElementById("emailReg").value = "";
+            document.getElementById("passwordReg").value = "";
+        } else {
+            console.log(data.message);
+
+            const regOK = document.getElementById("regOK");
+            regOK.textContent = data.message;
         }
 
     } catch (error) {

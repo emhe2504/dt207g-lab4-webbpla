@@ -1,1 +1,172 @@
+.special-elite {
+    font-family: "Special Elite", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
 
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8efff;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+header {
+    text-align: center;
+    background-color: #C9BEFF;
+}
+
+#guestbookImg {
+    width: 250px;
+    padding-top: 2%;
+}
+
+h1 {
+    margin: 0;
+    padding: 1%;
+    padding-top: 4%;
+    color: #6367FF;
+    font-size: 45px;
+}
+
+header nav {
+    display: flex;
+    margin: 3% auto;
+    justify-content: center;
+    background-color: #facff8;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    gap: 20px;
+    padding: 0;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #6367FF;
+    font-weight: 500;
+}
+
+header nav ul li a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+h2 {
+    text-align: center;
+    color: #6367FF;
+    padding: 2%;
+    font-size: 30px;
+}
+
+#allGuestbooks {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    width: 60%;
+    margin: 2% auto;
+}
+
+#allGuestbooks article {
+    width: 100%;
+    margin: 2% auto;
+    text-align: center;
+    box-shadow: 1px 2px 2px 2px #C9BEFF;
+    padding: 1%;
+    background-color: white;
+    border-radius: 8px;
+    line-height: 2.5em;
+}
+
+#errorAndForm {
+    width: 50%;
+    margin: 2% auto;
+}
+
+#regErrors,
+#errorUl,
+#loginError {
+    color: red;
+}
+
+#regOK {
+    color: #6367FF;
+    font-weight: 500;
+    padding-left: 2%;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin: 2% auto;
+    box-shadow: 1px 2px 2px 2px #C9BEFF;
+    padding: 4%;
+    background-color: white;
+    border-radius: 8px;
+}
+
+#loginForm,
+#registerForm {
+    width: 90%;
+}
+
+form label {
+    margin-bottom: 1%;
+    color: #6367FF;
+    font-weight: 500;
+}
+
+input[type="text"],
+textarea {
+    border: 1px solid #6367FF;
+    padding: 3px;
+}
+
+button {
+    width: 20%;
+    padding: 1%;
+    background-color: #d2caf8;
+    border: none;
+    color: #6367FF;
+    box-shadow: 0.5px 1px 1px 1px #6367FF;
+    font-weight: bold;
+}
+
+main nav ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+main nav ul li a {
+    font-weight: 500;
+    font-size: 16px;
+    color: #6367FF;
+}
+
+h3 {
+    margin-bottom: 2%;
+    color: #8494FF;
+}
+
+footer {
+    width: 100%;
+    margin: 0;
+    margin-top: 5%;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: #C9BEFF;
+    color: #6367FF;
+}
+
+footer p {
+    font-weight: 500;
+}

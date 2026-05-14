@@ -5,11 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TheGuestbook</title>
+  <link rel="stylesheet" href="src/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <header>
-    <h1>Gästboken för alla</h1>
+    <h1 class="special-elite">Gästboken för alla</h1>
     <nav>
       <ul>
         <li><a href="/index.html">Startsida</a></li>
@@ -17,20 +19,21 @@
     </nav>
   </header>
   <main>
-    <ul id="regErrors"></ul>
     <div id="register">
       <h2>Registrera konto</h2>
+      <div id="errorAndForm">
+      <ul id="regErrors"></ul>
+      <p id="regOK"></p>
       <form method="post" id="registerForm">
         <label for="emailReg">E-postadress</label>
-        <br>
         <input type="text" id="emailReg">
         <br>
         <label for="passwordReg">Lösenord</label>
-        <br>
         <input type="text" id="passwordReg">
         <br>
         <button type="submit">Registera konto</button>
       </form>
+      </div>
     </div>
     <nav>
       <ul>
@@ -38,7 +41,10 @@
       </ul>
     </nav>
   </main>
-  <footer></footer>
+  <footer>
+      <h4>Guestbook AB, 2026</h4>
+      <p>Skapad av: Emma Heikkinen, emhe2504@student.miun.se</p>
+    </footer>
   <script type="module" src="/src/main.js"></script>
 </body>
 
