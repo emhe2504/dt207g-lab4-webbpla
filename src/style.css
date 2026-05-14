@@ -116,7 +116,7 @@ h2 {
 form {
     display: grid;
     grid-template-columns: 1fr;
-    width: 100%;
+    width: 90%;
     margin: 2% auto;
     box-shadow: 1px 2px 2px 2px #C9BEFF;
     padding: 4%;
@@ -126,7 +126,7 @@ form {
 
 #loginForm,
 #registerForm {
-    width: 100%;
+    width: 90%;
 }
 
 form label {
